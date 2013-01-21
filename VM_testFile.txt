@@ -1,0 +1,69 @@
+;; test assembly file
+;;
+    push
+    pop
+    dup
+    drop
+    over
+    pop.a
+    push.a
+    pop.b
+    push.b
+    and
+    not
+    xor
+    shift.l
+    shift.r
+    add
+    mul
+    halt 5
+    jump start
+.varB: v     16; test comment after numeric parameter
+.varA: v loop01; test comment after label   parameter
+start:;          test comment after label declaration
+    fetch.a
+    if   brZero
+    jump end00
+brZero:
+    call testCall
+    jump end00
+end00:
+    ifneg brNeg
+    jump end01
+brNeg:
+    jump end01
+end01:
+
+;; test next
+loop01:
+    noop
+    next loop01
+
+;; test fetch and stores
+    fetch.a
+    store.a
+    fetch.a++
+    store.a++
+    fetch.b
+    store.b
+    fetch.b++
+    store.b++
+    store.pc
+    fetch.pc
+    noop
+    noop
+
+;; end nicely
+    halt 0
+
+testCall:
+    noop
+    return
+
+
+;; test coroutines
+;;
+    halt 99
+    coroutine
+
+
