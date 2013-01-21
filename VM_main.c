@@ -20,7 +20,7 @@ int main(int argc, const char * argv[])
     printf("Hello, World!\n");
 
     memset(myCode, 0, 16 * 1024);
-    char *testFile = "/Users/mdhender/Software/vmisc/vmisc/testFile.txt";
+    char *testFile = "./VM_testFile.txt";
     FILE *fpTest = fopen(testFile, "r");
     if (!fpTest) {
         perror(testFile);
